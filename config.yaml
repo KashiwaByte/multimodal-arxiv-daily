@@ -18,8 +18,8 @@ md_readme_path: 'README.md'
 
 
 keywords:
-    "agent":
+    "multimodal":
         filters: ["VLM","multimodal fusion","multimodal learning","cross-modal"]
-    "llm":
+    "computational argumentation":
         filters: ["Computational Argumentation","Argument Mining","Argument Generation","Argument Quality Assessment","LLM Debate"]
 
