@@ -1,7 +1,7 @@
 # TODO: add papers by configuration file
 base_url: "https://arxiv.paperswithcode.com/api/v0/papers/"
 user_name: "limafang"
-repo_name: "agent-arxiv-daily"
+repo_name: "multimodal-arxiv-daily"
 show_authors: True
 show_links: True
 show_badge: True
@@ -12,14 +12,14 @@ publish_gitpage: False
 publish_wechat: False
 
 # file paths
-json_readme_path: './docs/agent-arxiv-daily.json'
+json_readme_path: './docs/multimodal-arxiv-daily.json'
 
 md_readme_path: 'README.md'
 
 
 keywords:
     "agent":
-        filters: [LLM based agents,Large Language Model based agents,LLM agent]
+        filters: ["VLM","multimodal fusion","multimodal learning","cross-modal"]
     "llm":
-        filters: ["Large Language Model"]
+        filters: ["Computational Argumentation","Argument Mining","Argument Generation","Argument Quality Assessment","LLM Debate"]
 

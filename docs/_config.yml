@@ -1,10 +1,10 @@
-title: Agent Arxiv Daily
-description: Automatically Update CV Papers Daily using Github Actions (Update Every 8th hours)
+title: Multimodal Arxiv Daily
+description: Automatically Update  Multimodal and Computational Argumentation Papers Daily using Github Actions (Update Every 12th hours)
 show_downloads: true
 
 github:
-  zip_url: https://github.com/limafang/agent-arxiv-daily
-  another_url: https://github.com/limafang/agent-arxiv-daily
+  zip_url: https://github.com/KashiwaByte/multimodal-arxiv-daily
+  another_url: https://github.com/KashiwaByte/multimodal-arxiv-daily
 
 ## add remote theme
 remote_theme: jekyll/minima@v2.5.1
@@ -12,7 +12,7 @@ remote_theme: jekyll/minima@v2.5.1
 # minima:
 skin: dark
 social_links:
-  github: limafang
+  github: KashiwaByte
 
 plugins:
  - jekyll-remote-theme # add this line to the plugins list if you already have one
