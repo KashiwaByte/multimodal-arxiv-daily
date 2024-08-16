@@ -175,7 +175,8 @@ def get_daily_papers(topic, query="agent", max_results=2):
         matches = re.findall(pattern, comments)
         if matches:
             # 格式化输出匹配结果
-            paper_comment = [f"{conf} {year}".strip() for conf, year in matches]
+            formatted_matches = [f"{conf} {year}".strip() for conf, year in matches]
+            paper_comment = ', '.join(formatted_matches)
         else:
             paper_comment = 'null'
 
