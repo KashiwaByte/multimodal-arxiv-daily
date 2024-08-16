@@ -14,6 +14,7 @@ publish_wechat: False
 # file paths
 json_readme_path: './docs/multimodal-arxiv-daily.json'
 
+
 md_readme_path: 'README.md'
 
 
