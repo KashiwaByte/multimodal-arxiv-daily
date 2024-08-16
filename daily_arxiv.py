@@ -149,7 +149,8 @@ def get_daily_papers(topic, query="agent", max_results=2):
 
     for result in search_engine.results():
         # 定义正则表达式
-        pattern = r"(?i)(?<=accepted by\s).*"
+        pattern = r"(?i)\b(AAAI|NeurIPS|ACL|CVPR|ICCV|ICML|IJCAI|EMNLP|COLING|NAACL|EACL|CoNLL|ICLR|INLG|ECCV|MICCAI|IROS|MIDL|ICIP|KDD|MIDC)(?:\s?(\d{4}))?\b"
+
 
         paper_id = result.get_short_id()
         paper_title = result.title
@@ -171,9 +172,10 @@ def get_daily_papers(topic, query="agent", max_results=2):
         comments = result.comment
         if comments == None:
             comments = 'null'
-        match = re.search(pattern, comments)
-        if match:
-            paper_comment = match.group()
+        matches = re.findall(pattern, comments)
+        if matches:
+            # 格式化输出匹配结果
+            paper_comment = [f"{conf} {year}".strip() for conf, year in matches]
         else:
             paper_comment = 'null'
 
