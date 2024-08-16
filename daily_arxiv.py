@@ -215,12 +215,12 @@ def update_paper_links(filename):
         parts = s.split("|")
         date = parts[1].strip()
         title = parts[2].strip()
-        authors = parts[3].strip()
+        # authors = parts[3].strip()
         arxiv_id = parts[4].strip()
         code = parts[5].strip()
         paper_abstract = parts[6].strip()
         arxiv_id = re.sub(r'v\d+', '', arxiv_id)
-        return date, title, authors, arxiv_id, code, paper_abstract
+        return date, title, arxiv_id, code, paper_abstract
 
     with open(filename, "r") as f:
         content = f.read()
@@ -236,11 +236,11 @@ def update_paper_links(filename):
             for paper_id, contents in v.items():
                 contents = str(contents)
 
-                update_time, paper_title, paper_first_author, paper_url, code_url, paper_abstract = parse_arxiv_string(
+                update_time, paper_title, paper_url, code_url, paper_abstract = parse_arxiv_string(
                     contents)
 
-                contents = "|{}|{}|{}|{}|{}|{}|\n".format(
-                    update_time, paper_title, paper_first_author, paper_url, code_url, paper_abstract)
+                contents = "|{}|{}|{}|{}|{}|\n".format(
+                    update_time, paper_title, paper_url, code_url, paper_abstract)
                 json_data[keywords][paper_id] = str(contents)
                 logging.info(
                     f'paper_id = {paper_id}, contents = {contents} ,paper_abstract = {paper_abstract}')
@@ -381,8 +381,8 @@ def json_to_md(filename, md_filename,
 
             if use_title == True:
                 if to_web == False:
-                    f.write("|Publish Date|Title|Authors|PDF|Code|abstract|\n" +
-                            "|---|---|---|---|---|---|\n")
+                    f.write("|Publish Date|Title|PDF|Code|abstract|\n" +
+                            "|---|---|---|---|---|\n")
 
             # sort papers by date
             day_content = sort_papers(day_content)
