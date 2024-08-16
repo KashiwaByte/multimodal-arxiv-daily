@@ -169,6 +169,8 @@ def get_daily_papers(topic, query="agent", max_results=2):
         publish_time = result.published.date()
         update_time = result.updated.date()
         comments = result.comment
+        if comments == None:
+            comments = 'null'
         match = re.search(pattern, comments)
         if match:
             paper_comment = match.group()
