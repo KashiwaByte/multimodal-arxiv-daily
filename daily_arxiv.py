@@ -181,14 +181,14 @@ def get_daily_papers(topic, query="agent", max_results=2):
                 repo_url = r["official"]["url"]
 
             if repo_url is not None:
-                content[paper_key] = "|**{}**|**{}**|[{}]({})|**[link]({})**|**{}**|\n".format(
-                    update_time, paper_title, paper_key, paper_url, repo_url, paper_abstract)
+                content[paper_key] = "|**{}**|**[{}]({})**|[{}]({})|**[link]({})**|**{}**|\n".format(
+                    update_time, paper_title, paper_url,paper_key, paper_url, repo_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, Paper: [{}]({}), Code: **[{}]({})**".format(
                     update_time, paper_title, paper_url, paper_url, repo_url, repo_url)
 
             else:
-                content[paper_key] = "|**{}**|**{}**|[{}]({})|null|{}|\n".format(
-                    update_time, paper_title, paper_key, paper_url, paper_abstract)
+                content[paper_key] = "|**{}**|**[{}]({})**|[{}]({})|null|{}|\n".format(
+                    update_time, paper_title,paper_url, paper_key, paper_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, Paper: [{}]({}),{}".format(
                     update_time, paper_title, paper_url, paper_url, paper_abstract)
 
