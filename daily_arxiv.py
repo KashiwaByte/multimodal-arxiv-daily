@@ -145,11 +145,11 @@ def get_daily_papers(topic, query="agent", max_results=2):
         max_results=max_results,
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
-    # 定义正则表达式
-    pattern = r"(?i)(?<=accepted by\s).*"
+
 
     for result in search_engine.results():
-        
+        # 定义正则表达式
+        pattern = r"(?i)(?<=accepted by\s).*"
 
         paper_id = result.get_short_id()
         paper_title = result.title
@@ -173,7 +173,7 @@ def get_daily_papers(topic, query="agent", max_results=2):
         if match:
             paper_comment = match.group()
         else:
-            paper_comment = None
+            paper_comment = 'null'
 
 
         logging.info(
