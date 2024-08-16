@@ -51,12 +51,12 @@ jobs:
         env:
           DASHSCOPE_API_KEY: ${{ secrets.QWEN_API_KEY }}
 
-      - name: Push new agent-arxiv-daily.md
+      - name: Push new multimodal-arxiv-daily.md
         uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Github Action Automatic Update agent Arxiv Papers"
-          files: README.md docs/agent-arxiv-daily.json 
+          commit-message: "Github Action Automatic Update multimodal Arxiv Papers"
+          files: README.md docs/multimodal-arxiv-daily.json
           rebase: 'true'
           name: ${{ env.GITHUB_USER_NAME }}
           email: ${{ env.GITHUB_USER_EMAIL }}
