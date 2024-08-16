@@ -182,15 +182,15 @@ def get_daily_papers(topic, query="agent", max_results=2):
 
             if repo_url is not None:
                 content[paper_key] = "|**{}**|**{}**|[{}]({})|**[link]({})**|**{}**|\n".format(
-                    update_time, paper_title, paper_key, paper_url, repo_url, paper_abstract)
+                    update_time, [paper_title](paper_url), paper_key, paper_url, repo_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, Paper: [{}]({}), Code: **[{}]({})**".format(
-                    update_time, paper_title, paper_url, paper_url, repo_url, repo_url)
+                    update_time, [paper_title](paper_url), paper_url, paper_url, repo_url, repo_url)
 
             else:
                 content[paper_key] = "|**{}**|**{}**|[{}]({})|null|{}|\n".format(
-                    update_time, paper_title, paper_key, paper_url, paper_abstract)
+                    update_time, [paper_title](paper_url), paper_key, paper_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, Paper: [{}]({}),{}".format(
-                    update_time, paper_title, paper_url, paper_url, paper_abstract)
+                    update_time, [paper_title](paper_url), paper_url, paper_url, paper_abstract)
 
             # TODO: select useful comments
             comments = None
@@ -240,7 +240,7 @@ def update_paper_links(filename):
                     contents)
 
                 contents = "|{}|{}|{}|{}|{}|\n".format(
-                    update_time, paper_title, paper_url, code_url, paper_abstract)
+                    update_time, [paper_title](paper_url), paper_url, code_url, paper_abstract)
                 json_data[keywords][paper_id] = str(contents)
                 logging.info(
                     f'paper_id = {paper_id}, contents = {contents} ,paper_abstract = {paper_abstract}')
