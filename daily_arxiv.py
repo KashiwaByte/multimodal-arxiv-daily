@@ -8,6 +8,9 @@ import argparse
 import datetime
 import requests
 import dashscope
+import re
+
+
 
 dashscope.api_key = os.environ.get("DASHSCOPE_API_KEY")
 
@@ -142,11 +145,16 @@ def get_daily_papers(topic, query="agent", max_results=2):
         max_results=max_results,
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
+    # 定义正则表达式
+    pattern = r"(?i)(?<=accepted by\s).*"
 
     for result in search_engine.results():
+        
 
         paper_id = result.get_short_id()
         paper_title = result.title
+        
+
         paper_url = result.entry_id
         code_url = base_url + paper_id  # TODO
 
@@ -161,6 +169,12 @@ def get_daily_papers(topic, query="agent", max_results=2):
         publish_time = result.published.date()
         update_time = result.updated.date()
         comments = result.comment
+        match = re.search(pattern, comments)
+        if match:
+            paper_comment = match.group()
+        else:
+            paper_comment = None
+
 
         logging.info(
             f"Time = {update_time} title = {paper_title} author = {paper_first_author}")
@@ -181,14 +195,14 @@ def get_daily_papers(topic, query="agent", max_results=2):
                 repo_url = r["official"]["url"]
 
             if repo_url is not None:
-                content[paper_key] = "|**{}**|**[{}]({})**|[{}]({})|**[link]({})**|**{}**|\n".format(
-                    update_time, paper_title, paper_url,paper_key, paper_url, repo_url, paper_abstract)
+                content[paper_key] = "|**{}**|**[{}]({})**|**{}**|**[link]({})**|**{}**|\n".format(
+                    update_time, paper_title, paper_url,paper_comment, repo_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, Paper: [{}]({}), Code: **[{}]({})**".format(
                     update_time, paper_title, paper_url, paper_url, repo_url, repo_url)
 
             else:
-                content[paper_key] = "|**{}**|**[{}]({})**|[{}]({})|null|{}|\n".format(
-                    update_time, paper_title,paper_url, paper_key, paper_url, paper_abstract)
+                content[paper_key] = "|**{}**|**[{}]({})**|**{}**|null|{}|\n".format(
+                    update_time, paper_title,paper_url, paper_comment, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, Paper: [{}]({}),{}".format(
                     update_time, paper_title, paper_url, paper_url, paper_abstract)
 
@@ -381,7 +395,7 @@ def json_to_md(filename, md_filename,
 
             if use_title == True:
                 if to_web == False:
-                    f.write("|Publish Date|Title|PDF|Code|abstract|\n" +
+                    f.write("|Publish Date|Title|Accepted|Code|abstract|\n" +
                             "|---|---|---|---|---|\n")
 
             # sort papers by date
