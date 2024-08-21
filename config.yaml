@@ -23,5 +23,5 @@ keywords:
     "multimodal":
         filters: ["VLM","multimodal fusion","multimodal learning","Vision MoE"]
     "computational argumentation":
-        filters: ["Computational Argumentation","Argument Mining","Argument Generation","Argument Quality Assessment","Argument Quality ",""Multi-Agent Debate"","LLM Debate","debate",]
+        filters: ["Computational Argumentation","Argument Mining","Argument Generation","Argument Quality Assessment","Argument Quality ","Multi-Agent Debate","LLM Debate","debate",]
 
