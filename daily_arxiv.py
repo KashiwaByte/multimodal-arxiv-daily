@@ -141,7 +141,7 @@ def get_daily_papers(topic, query="agent", max_results=2):
     print(f"query is {query}")
     print("-----------------")
     search_engine = arxiv.Search(
-        query=query,
+        query=f'ti:{query}',
         max_results=max_results,
         sort_by=arxiv.SortCriterion.SubmittedDate
     )
