@@ -25,5 +25,5 @@ keywords:
     "computational argumentation":
         filters: ["Computational Argumentation","Argument Mining","Argument Generation","Argument Quality Assessment","Argument Quality "]
     "llm debate":
-        filters: ["Debate","Debater","Multi-Agent Debate","LLM Debate"]
+        filters: ["Debate"]
 
